@@ -1,24 +1,20 @@
-package com.example.ajay.animationswithopengl;
+package com.example.ajay.animationswithopengl.Activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ListView;
-import com.example.ajay.animationswithopengl.Adapter.MyAdapter;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.ajay.animationswithopengl.R;
 
-    private ListView mList;
-    private String[] mData = new String[]{"View Animations","Property Animations",
-            "Drawable Animations","Custom Animations"};
-    private final int COUNT = 20;
+public class ViewAnimations extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_view_animations);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -26,15 +22,10 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
-
-        mList = (ListView) findViewById(R.id.list);
-
-        MyAdapter lAdapter = new MyAdapter(this,mData);
-        mList.setAdapter(lAdapter);
-
     }
 
 }
