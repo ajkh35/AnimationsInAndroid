@@ -1,25 +1,14 @@
 package com.example.ajay.animationswithopengl.Adapter;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.media.Image;
-import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.ajay.animationswithopengl.R;
-import com.example.ajay.animationswithopengl.RowClickListener;
-
-import java.util.ArrayList;
 
 /**
  * Created by ajay on 31/1/16.
