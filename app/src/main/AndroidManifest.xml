@@ -29,6 +29,10 @@
         <activity
             android:name=".CrossFade"
             android:label="@string/title_activity_cross_fade"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.ViewAnimations"
+            android:label="@string/title_activity_view_animations"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

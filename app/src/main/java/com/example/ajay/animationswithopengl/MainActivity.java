@@ -27,7 +27,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private ListView mList;
-    private String[] mData = new String[]{"View Animations","Property Animations","Drawable Animations"};
+    private String[] mData = new String[]{"View Animations","Property Animations",
+            "Drawable Animations","Custom Animations"};
     private final int COUNT = 20;
 
     @Override

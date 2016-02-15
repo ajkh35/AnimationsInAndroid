@@ -4,4 +4,5 @@
     <string name="title_activity_open_gl">OpenGL</string>
     <string name="title_activity_cross_fade">CrossFade</string>
     <string name="para">Paragraoh</string>
+    <string name="title_activity_view_animations">ViewAnimations</string>
 </resources>
