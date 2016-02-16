@@ -11,8 +11,7 @@ import com.example.ajay.animationswithopengl.Adapter.MyAdapter;
 public class MainActivity extends AppCompatActivity {
 
     private ListView mList;
-    private String[] mData = new String[]{"View Animations","Property Animations",
-            "Drawable Animations","Custom Animations"};
+    private String[] mData;
     private final int COUNT = 20;
 
     @Override
@@ -30,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mData = getResources().getStringArray(R.array.list_elements);
         mList = (ListView) findViewById(R.id.list);
 
         MyAdapter lAdapter = new MyAdapter(this,mData);

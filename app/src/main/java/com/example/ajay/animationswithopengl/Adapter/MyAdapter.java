@@ -109,15 +109,18 @@ public class MyAdapter extends BaseAdapter{
                         break;
 
                     case 1:
-                        Toast.makeText(mContext,"Case 1",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext,mContext.getString(R.string.property_animations),
+                                Toast.LENGTH_SHORT).show();
                         break;
 
                     case 2:
-                        Toast.makeText(mContext,"Case 2",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext,mContext.getString(R.string.drawable_animations),
+                                Toast.LENGTH_SHORT).show();
                         break;
 
                     case 3:
-                        Toast.makeText(mContext,"Case 3",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext,mContext.getString(R.string.custom_animations),
+                                Toast.LENGTH_SHORT).show();
                         break;
 
                     default:
