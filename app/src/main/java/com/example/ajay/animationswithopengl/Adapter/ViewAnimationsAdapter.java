@@ -101,7 +101,8 @@ public class ViewAnimationsAdapter extends BaseAdapter {
                                 mAnimation = AnimationUtils.loadAnimation(mContext,R.anim.transform);
                                 break;
                             case 4:
-                                mAnimation = AnimationUtils.loadAnimation(mContext,R.anim.custom_view_animations);
+                                mAnimation = AnimationUtils.loadAnimation(mContext,
+                                        R.anim.custom_view_animations);
                                 break;
                             default:
                                 break;
@@ -118,7 +119,8 @@ public class ViewAnimationsAdapter extends BaseAdapter {
 
                     @Override
                     protected void onPostExecute(String s) {
-                        Toast.makeText(mContext,R.string.notice_animation,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext,R.string.notice_animation,
+                                Toast.LENGTH_SHORT).show();
                         super.onPostExecute(s);
                     }
 

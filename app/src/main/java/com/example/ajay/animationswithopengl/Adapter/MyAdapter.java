@@ -1,5 +1,7 @@
 package com.example.ajay.animationswithopengl.Adapter;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -8,11 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ajay.animationswithopengl.Activities.CustomAnimations;
+import com.example.ajay.animationswithopengl.Activities.DrawableAnimations;
+import com.example.ajay.animationswithopengl.Activities.PropertyAnimations;
 import com.example.ajay.animationswithopengl.Activities.ViewAnimations;
 import com.example.ajay.animationswithopengl.R;
 
@@ -68,7 +74,7 @@ public class MyAdapter extends BaseAdapter{
         lHolder.mTitle.setText(mDataList[position]);
         convertView.setBackgroundColor(getViewColor(position));
 
-        setOnClickListenerForCard(convertView,position);
+        setOnClickListenerForCard(convertView, position);
         return convertView;
     }
 
@@ -78,60 +84,69 @@ public class MyAdapter extends BaseAdapter{
             @Override
             public void onClick(final View v) {
 
-                switch (position) {
+                new AsyncTask<String,String,String>(){
 
-                    case 0:
-                        new AsyncTask<String,String,String>(){
-                            @Override
-                            protected void onPreExecute() {
-                                Animation lAnimation = AnimationUtils.loadAnimation(mContext,R.anim.tween);
+                    private Intent lIntent;
+
+                    @Override
+                    protected void onPreExecute() {
+
+                        switch (position) {
+
+                            case 0:
+                                Animation lAnimation = AnimationUtils
+                                        .loadAnimation(mContext, R.anim.tween);
                                 v.startAnimation(lAnimation);
-                                super.onPreExecute();
-                            }
+                                lIntent = new Intent(mContext, ViewAnimations.class);
+                                break;
 
-                            @Override
-                            protected String doInBackground(String... params) {
-                                try {
-                                    Thread.sleep(400);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                                return null;
-                            }
+                            case 1:
+                                AnimatorSet set = (AnimatorSet) AnimatorInflater
+                                        .loadAnimator(mContext, R.animator.property_animator);
+                                set.setTarget(v);
+                                set.start();
+                                lIntent = new Intent(mContext, PropertyAnimations.class);
+                                break;
 
-                            @Override
-                            protected void onPostExecute(String s) {
-                                Intent intent = new Intent(mContext, ViewAnimations.class);
-                                mContext.startActivity(intent);
-                                super.onPostExecute(s);
-                            }
-                        }.execute();
-                        break;
+                            case 2:
 
-                    case 1:
-                        Toast.makeText(mContext,mContext.getString(R.string.property_animations),
-                                Toast.LENGTH_SHORT).show();
-                        break;
+                                lIntent = new Intent(mContext, DrawableAnimations.class);
+                                break;
 
-                    case 2:
-                        Toast.makeText(mContext,mContext.getString(R.string.drawable_animations),
-                                Toast.LENGTH_SHORT).show();
-                        break;
+                            case 3:
 
-                    case 3:
-                        Toast.makeText(mContext,mContext.getString(R.string.custom_animations),
-                                Toast.LENGTH_SHORT).show();
-                        break;
+                                lIntent = new Intent(mContext, CustomAnimations.class);
+                                break;
 
-                    default:
-                        break;
-                }
+                            default:
+                                break;
+                        }
+                        super.onPreExecute();
+                    }
+
+                    @Override
+                    protected String doInBackground(String... params) {
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(String s) {
+                        mContext.startActivity(lIntent);
+                        super.onPostExecute(s);
+                    }
+                }.execute();
+
             }
         });
     }
 
     private int getViewColor(int position){
-        int color = 0x000;
+        int color = android.R.color.black;
 
             switch (position){
 

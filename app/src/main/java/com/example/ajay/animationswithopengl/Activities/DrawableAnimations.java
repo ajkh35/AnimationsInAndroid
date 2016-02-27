@@ -6,20 +6,16 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ListView;
+import android.widget.Toast;
 
-import com.example.ajay.animationswithopengl.Adapter.ViewAnimationsAdapter;
 import com.example.ajay.animationswithopengl.R;
 
-public class ViewAnimations extends AppCompatActivity {
-
-    private ListView mListView;
-    private String[] mDataList;
+public class DrawableAnimations extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_animations);
+        setContentView(R.layout.activity_drawable_animations);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.rsz_ic_action_back);
@@ -30,10 +26,7 @@ public class ViewAnimations extends AppCompatActivity {
             }
         });
 
-        mListView = (ListView) findViewById(R.id.view_animations_list);
-        mDataList = getResources().getStringArray(R.array.view_animation_elements);
-        ViewAnimationsAdapter lAdapter = new ViewAnimationsAdapter(this,mDataList);
-        mListView.setAdapter(lAdapter);
+        Toast.makeText(this,getString(R.string.drawable_animations),Toast.LENGTH_SHORT).show();
     }
 
 }
