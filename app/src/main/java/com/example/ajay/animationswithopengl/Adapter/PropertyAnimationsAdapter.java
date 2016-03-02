@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ajay.animationswithopengl.Fragments.AnimatorSetFragment;
 import com.example.ajay.animationswithopengl.Fragments.ObjectAnimatorFragment;
 import com.example.ajay.animationswithopengl.Fragments.ValueAnimatorFragment;
 import com.example.ajay.animationswithopengl.R;
@@ -69,7 +70,8 @@ public class PropertyAnimationsAdapter extends BaseAdapter {
         RowHolder rowHolder;
 
         if(convertView == null){
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.row_property_animations,null);
+            convertView = LayoutInflater.from(mContext)
+                    .inflate(R.layout.row_property_animations,null);
             rowHolder = new RowHolder(convertView);
             convertView.setTag(rowHolder);
         }else{
@@ -83,6 +85,12 @@ public class PropertyAnimationsAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * OnClickListener for row click
+     *
+     * @param pHolder
+     * @param position
+     */
     private void setOnClickListenerForRow(RowHolder pHolder, final int position){
 
         pHolder.mAnimationLayout.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +109,10 @@ public class PropertyAnimationsAdapter extends BaseAdapter {
                         fragment = new ObjectAnimatorFragment();
                         break;
 
+                    case 2:
+                        fragment = new AnimatorSetFragment();
+                        break;
+
                     default:
                         break;
                 }
@@ -114,6 +126,10 @@ public class PropertyAnimationsAdapter extends BaseAdapter {
         });
     }
 
+    /**
+     * Method to fetch color for the card
+     * @return
+     */
     private int getColor(){
         return R.color.colorPrimary;
     }

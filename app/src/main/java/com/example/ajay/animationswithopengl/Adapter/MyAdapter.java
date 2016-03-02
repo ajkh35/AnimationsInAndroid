@@ -30,6 +30,9 @@ public class MyAdapter extends BaseAdapter{
     private Context mContext;
     private String[] mDataList;
 
+    /**
+     * View holder class
+     */
     private class MyViewHolder{
         private TextView mTitle;
 
@@ -78,6 +81,11 @@ public class MyAdapter extends BaseAdapter{
         return convertView;
     }
 
+    /**
+     * Card click listener
+     * @param convertView
+     * @param position
+     */
     private void setOnClickListenerForCard(View convertView, final int position){
 
         convertView.setOnClickListener(new View.OnClickListener() {
@@ -145,6 +153,12 @@ public class MyAdapter extends BaseAdapter{
         });
     }
 
+    /**
+     * Method to get the card color
+     *
+     * @param position
+     * @return
+     */
     private int getViewColor(int position){
         int color = android.R.color.black;
 

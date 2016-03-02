@@ -35,9 +35,9 @@ public class PropertyAnimations extends AppCompatActivity {
                 if(mFrame.getVisibility()==View.VISIBLE){
                     mFrame.setVisibility(View.GONE);
                     mListView.setVisibility(View.VISIBLE);
-                }else{
-                    finish();
+                    return;
                 }
+                finish();
             }
         });
 
@@ -48,5 +48,16 @@ public class PropertyAnimations extends AppCompatActivity {
         PropertyAnimationsAdapter adapter = new PropertyAnimationsAdapter(
                 PropertyAnimations.this,mDataList,mFrame,mListView,mFragmentManager);
         mListView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(mFrame.getVisibility()==View.VISIBLE){
+            mFrame.setVisibility(View.GONE);
+            mListView.setVisibility(View.VISIBLE);
+            return;
+        }
+        super.onBackPressed();
     }
 }

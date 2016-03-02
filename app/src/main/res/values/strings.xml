@@ -29,6 +29,7 @@
     <string-array name="property_animation_elements">
         <item>Value Animator</item>
         <item>Object Animator</item>
+        <item>Animator Set</item>
     </string-array>
     <string name="title_activity_property_animations">PropertyAnimations</string>
     <string name="title_activity_drawable_animations">DrawableAnimations</string>
@@ -37,6 +38,14 @@
     <string name="scale">Scale</string>
     <string name="linear_interpolator">Linear Interpolator</string>
     <string name="accelerate_decelerate">Accelerate/Decelerate</string>
-    <string name="set_interpolators">Set Interpolators</string>
+    <string name="set_interpolator">Select Interpolator</string>
     <string name="value_animator">Value Animator</string>
+    <string name="object_animator">Object Animator</string>
+    <string name="transform">Transform</string>
+    <string name="custom_interpolator">Custom Interpolator</string>
+    <string name="animator_set">Animator Set</string>
+    <string name="ball">Ball</string>
+    <string name="frame">Frame</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="reset">Reset</string>
 </resources>
