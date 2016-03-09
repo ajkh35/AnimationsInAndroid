@@ -117,12 +117,10 @@ public class MyAdapter extends BaseAdapter{
                                 break;
 
                             case 2:
-
                                 lIntent = new Intent(mContext, DrawableAnimations.class);
                                 break;
 
                             case 3:
-
                                 lIntent = new Intent(mContext, CustomAnimations.class);
                                 break;
 

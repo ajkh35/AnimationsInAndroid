@@ -39,6 +39,9 @@ public class PropertyAnimationsAdapter extends BaseAdapter {
         mListView = pListView;
     }
 
+    /**
+     * ViewHolder class
+     */
     private class RowHolder{
         private LinearLayout mAnimationLayout;
         private TextView mAnimationText;

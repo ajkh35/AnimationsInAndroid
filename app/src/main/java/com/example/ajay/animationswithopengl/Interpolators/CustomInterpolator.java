@@ -1,11 +1,11 @@
 package com.example.ajay.animationswithopengl.Interpolators;
 
-import android.graphics.Interpolator;
+import android.view.animation.Interpolator;
 
 /**
  * Created by ajay on 28/2/16.
  */
-public class CustomInterpolator implements android.view.animation.Interpolator {
+public class CustomInterpolator implements Interpolator {
 
     public CustomInterpolator(){
     }

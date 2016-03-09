@@ -1,17 +1,23 @@
 package com.example.ajay.animationswithopengl.Activities;
 
+import android.annotation.TargetApi;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.ajay.animationswithopengl.R;
 
 public class DrawableAnimations extends AppCompatActivity {
 
+    private ImageView mImage;
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +32,14 @@ public class DrawableAnimations extends AppCompatActivity {
             }
         });
 
-        Toast.makeText(this,getString(R.string.drawable_animations),Toast.LENGTH_SHORT).show();
+        mImage = (ImageView) findViewById(R.id.spin);
+        mImage.setBackground(getResources().getDrawable(R.drawable.drawable_animator_list));
+        AnimationDrawable animationDrawable = (AnimationDrawable) mImage.getBackground();
+        animationDrawable.start();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
