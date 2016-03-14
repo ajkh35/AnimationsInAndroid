@@ -158,9 +158,10 @@ public class MyAdapter extends BaseAdapter{
      * @return
      */
     private int getViewColor(int position){
+
         int color = android.R.color.black;
 
-            switch (position){
+        switch (position){
 
                 case 0:
                     color = ContextCompat.getColor(mContext,R.color.colorAccent);
@@ -180,7 +181,7 @@ public class MyAdapter extends BaseAdapter{
 
                 default:
                     break;
-            }
+        }
 
         return color;
     }

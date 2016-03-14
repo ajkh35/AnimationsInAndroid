@@ -5,9 +5,12 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -31,9 +34,13 @@ public class DrawableAnimations extends AppCompatActivity {
                 finish();
             }
         });
+        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent));
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorAccent));
 
         mImage = (ImageView) findViewById(R.id.spin);
-        mImage.setBackground(getResources().getDrawable(R.drawable.drawable_animator_list));
+        mImage.setBackground(ContextCompat.getDrawable(this, R.drawable.drawable_animator_list));
         AnimationDrawable animationDrawable = (AnimationDrawable) mImage.getBackground();
         animationDrawable.start();
     }
