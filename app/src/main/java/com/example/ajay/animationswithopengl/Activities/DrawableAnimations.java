@@ -2,7 +2,6 @@ package com.example.ajay.animationswithopengl.Activities;
 
 import android.annotation.TargetApi;
 import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -12,13 +11,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.ajay.animationswithopengl.R;
 
 public class DrawableAnimations extends AppCompatActivity {
 
     private ImageView mImage;
+    private AnimationDrawable mAnimationDrawable;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -41,12 +40,16 @@ public class DrawableAnimations extends AppCompatActivity {
 
         mImage = (ImageView) findViewById(R.id.spin);
         mImage.setBackground(ContextCompat.getDrawable(this, R.drawable.drawable_animator_list));
-        AnimationDrawable animationDrawable = (AnimationDrawable) mImage.getBackground();
-        animationDrawable.start();
+        mAnimationDrawable = (AnimationDrawable) mImage.getBackground();
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+
+        if(hasFocus)
+            mAnimationDrawable.start();
+        else
+            mAnimationDrawable.stop();
     }
 }

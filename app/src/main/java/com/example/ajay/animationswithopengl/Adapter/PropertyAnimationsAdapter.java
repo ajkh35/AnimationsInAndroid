@@ -1,7 +1,6 @@
 package com.example.ajay.animationswithopengl.Adapter;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -12,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ajay.animationswithopengl.Fragments.AnimatorSetFragment;
 import com.example.ajay.animationswithopengl.Fragments.ObjectAnimatorFragment;

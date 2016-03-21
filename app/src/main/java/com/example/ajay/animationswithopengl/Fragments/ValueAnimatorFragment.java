@@ -25,8 +25,6 @@ import android.widget.Toast;
 import com.example.ajay.animationswithopengl.Interpolators.CustomInterpolator;
 import com.example.ajay.animationswithopengl.R;
 
-import org.w3c.dom.Text;
-
 /**
  * Created by ajay on 27/2/16.
  */
@@ -174,30 +172,51 @@ public class ValueAnimatorFragment extends Fragment implements View.OnClickListe
                 break;
 
             case R.id.ball_layout_text:
-                mBallLayout.setVisibility(View.VISIBLE);
-                mBottomLayout.setVisibility(View.VISIBLE);
-                mFrameLayout.setVisibility(View.GONE);
-                mReset.setVisibility(View.GONE);
+                showBallLayout();
                 break;
 
             case R.id.frame_layout_text:
-                mBallLayout.setVisibility(View.GONE);
-                mBottomLayout.setVisibility(View.GONE);
-                mFrameLayout.setVisibility(View.VISIBLE);
-                mReset.setVisibility(View.VISIBLE);
+                showFrameLayout();
                 break;
 
             case R.id.reset:
-                mHiddenText.setAlpha(0);
-                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
-                        mBottomBar.getLayoutParams();
-                params.topMargin = (int) getResources().getDimension(R.dimen.dp_10);
-                mBottomBar.setLayoutParams(params);
+                reset();
                 break;
 
             default:
                 break;
         }
+    }
+
+    /**
+     * Method to reset the frame layout
+     */
+    public void reset(){
+        mHiddenText.setAlpha(0);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                mBottomBar.getLayoutParams();
+        params.topMargin = (int) getResources().getDimension(R.dimen.dp_10);
+        mBottomBar.setLayoutParams(params);
+    }
+
+    /**
+     * Method to set visibility for frame layout
+     */
+    public void showFrameLayout(){
+        mBallLayout.setVisibility(View.GONE);
+        mBottomLayout.setVisibility(View.GONE);
+        mFrameLayout.setVisibility(View.VISIBLE);
+        mReset.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * Method to set visibility for ball layout
+     */
+    public void showBallLayout(){
+        mBallLayout.setVisibility(View.VISIBLE);
+        mBottomLayout.setVisibility(View.VISIBLE);
+        mFrameLayout.setVisibility(View.GONE);
+        mReset.setVisibility(View.GONE);
     }
 
     /**

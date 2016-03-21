@@ -2,7 +2,6 @@ package com.example.ajay.animationswithopengl.Adapter;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

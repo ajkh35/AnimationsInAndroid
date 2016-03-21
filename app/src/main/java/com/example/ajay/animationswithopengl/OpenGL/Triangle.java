@@ -2,8 +2,6 @@ package com.example.ajay.animationswithopengl.OpenGL;
 
 import android.opengl.GLES20;
 
-import com.example.ajay.animationswithopengl.OpenGL.CustomRenderer;
-
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
