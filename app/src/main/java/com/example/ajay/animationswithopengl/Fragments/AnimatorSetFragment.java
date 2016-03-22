@@ -25,8 +25,9 @@ import javax.xml.datatype.Duration;
 public class AnimatorSetFragment extends Fragment {
 
     private LinearLayout mBallLayout;
+    private LinearLayout mBallLayout2;
     private ImageView mBall;
-    private AnimatorSet mAnimatorSet;
+    private ImageView mBall2;
     private ValueAnimator mTransformAnimator;
 
     @Nullable
@@ -37,42 +38,78 @@ public class AnimatorSetFragment extends Fragment {
 
         mBall = (ImageView) view.findViewById(R.id.ball);
         mBallLayout = (LinearLayout) view.findViewById(R.id.ball_layout);
+        mBall2 = (ImageView) view.findViewById(R.id.ball2);
+        mBallLayout2 = (LinearLayout) view.findViewById(R.id.ball_layout2);
 
-        mAnimatorSet = new AnimatorSet();
+        applyAnimations(mBall,mBallLayout);
+        applyAnimations(mBall2,mBallLayout2);
 
-        Animator animator = ObjectAnimator.ofFloat(mBall,"alpha",1,0,1)
-                            .setDuration(1000);
-        Animator animator2 = ObjectAnimator.ofFloat(mBall, "scaleX", 0, 0.25f,0.5f, 0.75f, 1)
-                            .setDuration(1000);
-        Animator animator3 = ObjectAnimator.ofFloat(mBallLayout, "scaleY", 0, 0.25f, 0.5f, 0.75f, 1)
-                            .setDuration(1000);
-
-        //To create a transform animation
-        createTransformAnimation();
-
-        mAnimatorSet.play(animator)
-                .with(animator2)
-                .with(animator3)
-                .after(mTransformAnimator);
-        mAnimatorSet.start();
         return view;
     }
 
     /**
-     * Method to create a transformation animation
+     * Method to apply animations
+     * @param ball
+     * @param ballLayout
      */
-    private void createTransformAnimation(){
+    private void applyAnimations(View ball,View ballLayout){
 
-        final RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mBallLayout.getLayoutParams();
+        AnimatorSet animatorSet = new AnimatorSet();
+
+        Animator animator = ObjectAnimator.ofFloat(ball,"alpha",1,0,1)
+                .setDuration(1000);
+        Animator animator2 = ObjectAnimator.ofFloat(ballLayout, "scaleX", 0, 0.25f,0.5f, 0.75f, 1)
+                .setDuration(1000);
+        Animator animator3 = ObjectAnimator.ofFloat(ballLayout, "scaleY", 0, 0.25f, 0.5f, 0.75f, 1)
+                .setDuration(1000);
+
+        //To create a transform animation
+        if(ball.getId() == R.id.ball)
+            createTransformDownAnimation(ballLayout);
+        else
+            createTransformUpAnimation(ballLayout);
+
+        animatorSet.play(animator)
+                .with(animator2)
+                .with(animator3)
+                .after(mTransformAnimator);
+        animatorSet.start();
+    }
+
+    /**
+     * Method to create a downward transformation animation
+     */
+    private void createTransformDownAnimation(final View ballLayout){
+
+        final RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) ballLayout.getLayoutParams();
         mTransformAnimator = ValueAnimator.ofInt(params.topMargin, params.topMargin +
-                (int) getResources().getDimension(R.dimen.dp_150))
+                (int) getResources().getDimension(R.dimen.dp_250))
                 .setDuration(1000);
         mTransformAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
 
                 params.topMargin = (int) animation.getAnimatedValue();
-                mBallLayout.requestLayout();
+                ballLayout.requestLayout();
+            }
+        });
+    }
+
+    /**
+     * Method to create a upward transformation animation
+     */
+    private void createTransformUpAnimation(final View ballLayout){
+
+        final RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) ballLayout.getLayoutParams();
+        mTransformAnimator = ValueAnimator.ofInt(params.bottomMargin, params.bottomMargin +
+                (int) getResources().getDimension(R.dimen.dp_250))
+                .setDuration(1000);
+        mTransformAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+
+                params.bottomMargin = (int) animation.getAnimatedValue();
+                ballLayout.requestLayout();
             }
         });
     }

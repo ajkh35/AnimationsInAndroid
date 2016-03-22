@@ -23,4 +23,6 @@
     <dimen name="dp_30">30dp</dimen>
     <dimen name="dp_7">7dp</dimen>
     <dimen name="dp__3">.3dp</dimen>
+    <dimen name="dp_200">200dp</dimen>
+    <dimen name="dp_250">250dp</dimen>
 </resources>
