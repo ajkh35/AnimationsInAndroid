@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,4 +13,25 @@
     tools:showIn="@layout/activity_custom_animations"
     android:background="@android:color/holo_orange_dark">
 
-</RelativeLayout>
+    <ListView
+        android:id="@+id/custom_animation_list"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_15"
+        android:paddingLeft="@dimen/dp_15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/ball_layout"
+        android:layout_marginTop="@dimen/dp_100"
+        android:layout_width="@dimen/dp_70"
+        android:layout_height="@dimen/dp_70">
+
+        <ImageView
+            android:id="@+id/animated_ball"
+            android:background="@drawable/ball"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</FrameLayout>

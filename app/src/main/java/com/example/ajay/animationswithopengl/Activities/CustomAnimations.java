@@ -4,11 +4,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.ajay.animationswithopengl.Adapter.CustomAnimationsAdapter;
 import com.example.ajay.animationswithopengl.R;
 
 public class CustomAnimations extends AppCompatActivity {
+
+    private String[] mDataList;
+    private ListView mList;
+    private LinearLayout mBallLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +31,13 @@ public class CustomAnimations extends AppCompatActivity {
             }
         });
 
-        Toast.makeText(this,getString(R.string.custom_animations),Toast.LENGTH_SHORT).show();
+        mDataList = getResources().getStringArray(R.array.custom_animation_elements);
+        mList = (ListView) findViewById(R.id.custom_animation_list);
+        mBallLayout = (LinearLayout) findViewById(R.id.ball_layout);
+
+
+        CustomAnimationsAdapter adapter = new CustomAnimationsAdapter(this,mDataList);
+        mList.setAdapter(adapter);
     }
 
 }

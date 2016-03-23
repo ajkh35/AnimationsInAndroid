@@ -1,7 +1,6 @@
 package com.example.ajay.animationswithopengl.Fragments;
 
 import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -16,8 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.example.ajay.animationswithopengl.R;
-
-import javax.xml.datatype.Duration;
 
 /**
  * Created by ajay on 29/2/16.

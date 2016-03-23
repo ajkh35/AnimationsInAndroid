@@ -31,6 +31,12 @@
         <item>Object Animator</item>
         <item>Animator Set</item>
     </string-array>
+
+    <string-array name="custom_animation_elements">
+        <item>Scene end Transitions</item>
+        <item>Custom Animations</item>
+    </string-array>
+
     <string name="title_activity_property_animations">PropertyAnimations</string>
     <string name="title_activity_drawable_animations">DrawableAnimations</string>
     <string name="title_activity_custom_animations">CustomAnimations</string>
