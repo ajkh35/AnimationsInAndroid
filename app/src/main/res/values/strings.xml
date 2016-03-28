@@ -37,6 +37,12 @@
         <item>Custom Animations</item>
     </string-array>
 
+    <string-array name="transitions_fragment_elements">
+        <item>CrossFade</item>
+        <item>Card Flip Animation</item>
+        <item>Zooming a View</item>
+    </string-array>
+
     <string name="title_activity_property_animations">PropertyAnimations</string>
     <string name="title_activity_drawable_animations">DrawableAnimations</string>
     <string name="title_activity_custom_animations">CustomAnimations</string>
@@ -54,4 +60,7 @@
     <string name="frame">Frame</string>
     <string name="checkbox">CheckBox</string>
     <string name="reset">Reset</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

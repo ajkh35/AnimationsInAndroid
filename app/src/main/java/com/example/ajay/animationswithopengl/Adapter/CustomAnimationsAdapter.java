@@ -1,13 +1,18 @@
 package com.example.ajay.animationswithopengl.Adapter;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.ajay.animationswithopengl.Fragments.TransitionsFragment;
 import com.example.ajay.animationswithopengl.R;
 
 /**
@@ -17,10 +22,15 @@ public class CustomAnimationsAdapter extends BaseAdapter {
 
     private String[] mDataList;
     private Context mContext;
+    private FragmentManager mFragmentManager;
+    private FrameLayout mFrame;
 
-    public CustomAnimationsAdapter(Context context,String[] dataList){
+    public CustomAnimationsAdapter(Context context,String[] dataList,
+                                   FragmentManager pFragmentManager,FrameLayout pFrame){
         mContext = context;
         mDataList = dataList;
+        mFragmentManager = pFragmentManager;
+        mFrame = pFrame;
     }
 
     /**
@@ -68,8 +78,39 @@ public class CustomAnimationsAdapter extends BaseAdapter {
 
         holder.mText.setText(mDataList[position]);
         holder.mLayout.setBackgroundColor(getColor());
-
+        setOnClickListenerForRow(holder, position);
         return convertView;
+    }
+
+    /**
+     * Method to set on click listener for row click
+     * @param holder
+     */
+    private void setOnClickListenerForRow(RowHolder holder, final int position){
+
+        holder.mLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Fragment fragment = null;
+
+                switch(position){
+                    case 0:
+                        fragment = new TransitionsFragment();
+                        break;
+
+                    case 1:
+                        break;
+
+                    default:
+                        break;
+                }
+
+                mFragmentManager.beginTransaction()
+                        .replace(mFrame.getId(), fragment)
+                        .commit();
+            }
+        });
     }
 
     /**

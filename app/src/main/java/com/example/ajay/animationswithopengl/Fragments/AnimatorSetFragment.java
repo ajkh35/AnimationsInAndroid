@@ -70,6 +70,7 @@ public class AnimatorSetFragment extends Fragment {
                 .with(animator2)
                 .with(animator3)
                 .after(mTransformAnimator);
+
         animatorSet.start();
     }
 

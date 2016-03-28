@@ -1,9 +1,11 @@
 package com.example.ajay.animationswithopengl.Activities;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -15,7 +17,8 @@ public class CustomAnimations extends AppCompatActivity {
 
     private String[] mDataList;
     private ListView mList;
-    private LinearLayout mBallLayout;
+    private FragmentManager mFragmentManager;
+    private FrameLayout mFrame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +36,11 @@ public class CustomAnimations extends AppCompatActivity {
 
         mDataList = getResources().getStringArray(R.array.custom_animation_elements);
         mList = (ListView) findViewById(R.id.custom_animation_list);
-        mBallLayout = (LinearLayout) findViewById(R.id.ball_layout);
+        mFrame = (FrameLayout) findViewById(R.id.frame);
+        mFragmentManager = getSupportFragmentManager();
 
-
-        CustomAnimationsAdapter adapter = new CustomAnimationsAdapter(this,mDataList);
+        CustomAnimationsAdapter adapter = new CustomAnimationsAdapter(this,mDataList,
+                                        mFragmentManager,mFrame);
         mList.setAdapter(adapter);
     }
 

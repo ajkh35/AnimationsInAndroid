@@ -22,16 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <LinearLayout
-        android:id="@+id/ball_layout"
-        android:layout_marginTop="@dimen/dp_100"
-        android:layout_width="@dimen/dp_70"
-        android:layout_height="@dimen/dp_70">
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-        <ImageView
-            android:id="@+id/animated_ball"
-            android:background="@drawable/ball"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
 </FrameLayout>
