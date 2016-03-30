@@ -16,26 +16,7 @@
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <ScrollView
-            android:id="@+id/scroller"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/paragraph"
-                style="@android:style/TextAppearance.Medium"
-                android:text="@string/para"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </ScrollView>
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_gravity="center"
-            style="@android:style/Widget.ProgressBar.Large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <include layout="@layout/initial_scene_crossfade"/>
     </FrameLayout>
 
 </RelativeLayout>

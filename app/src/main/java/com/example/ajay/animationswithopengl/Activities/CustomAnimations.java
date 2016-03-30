@@ -40,7 +40,7 @@ public class CustomAnimations extends AppCompatActivity {
         mFragmentManager = getSupportFragmentManager();
 
         CustomAnimationsAdapter adapter = new CustomAnimationsAdapter(this,mDataList,
-                                        mFragmentManager,mFrame);
+                mFragmentManager,mFrame,mList);
         mList.setAdapter(adapter);
     }
 

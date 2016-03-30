@@ -1,9 +1,14 @@
 package com.example.ajay.animationswithopengl.Fragments;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.transition.Fade;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +16,9 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.ajay.animationswithopengl.CrossFade;
 import com.example.ajay.animationswithopengl.R;
 
 /**
@@ -29,6 +36,7 @@ public class TransitionsFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private ListView mList;
     private String[] mDataList;
+    private Fade mFade;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -67,6 +75,7 @@ public class TransitionsFragment extends Fragment {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,6 +83,7 @@ public class TransitionsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_transitions, container, false);
         mList = (ListView) view.findViewById(R.id.scene_list);
         mDataList = getResources().getStringArray(R.array.transitions_fragment_elements);
+        mFade = new Fade(Fade.IN);
 
         TransitionsFragmentAdapter adapter = new TransitionsFragmentAdapter(getActivity(),mDataList);
         mList.setAdapter(adapter);
@@ -85,23 +95,6 @@ public class TransitionsFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
     }
 
     @Override
@@ -124,6 +117,9 @@ public class TransitionsFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
+    /**
+     * Adapter for Transitions Fragment
+     */
     public class TransitionsFragmentAdapter extends BaseAdapter {
 
         private String[] mDataList;
@@ -174,21 +170,34 @@ public class TransitionsFragment extends Fragment {
             }
 
             holder.mText.setText(mDataList[position]);
+            holder.mLayout.setBackgroundColor(getColor());
             setOnClickListenerForRow(holder,position);
             return convertView;
         }
 
+        /**
+         * Method to set onClickListener for row
+         * @param holder
+         * @param position
+         */
         private void setOnClickListenerForRow(RowHolder holder, final int position){
 
             holder.mLayout.setOnClickListener(new View.OnClickListener() {
+                @TargetApi(Build.VERSION_CODES.KITKAT)
                 @Override
                 public void onClick(View v) {
 
-                    switch (position){
+                    switch (position) {
                         case 0:
+                            launchCrossFade();
                             break;
 
                         case 1:
+                            Toast.makeText(mContext,"Card flip clicked",Toast.LENGTH_SHORT).show();
+                            break;
+
+                        case 2:
+                            Toast.makeText(mContext,"Zooming view clicked",Toast.LENGTH_SHORT).show();
                             break;
 
                         default:
@@ -196,6 +205,23 @@ public class TransitionsFragment extends Fragment {
                     }
                 }
             });
+        }
+
+        /**
+         * Method to launch CrossFade
+         */
+        private void launchCrossFade(){
+            Intent intent = new Intent(mContext, CrossFade.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            mContext.startActivity(intent);
+        }
+
+        /**
+         * Method to return color for row
+         * @return
+         */
+        private int getColor(){
+            return R.color.colorPrimary;
         }
     }
 }

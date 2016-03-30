@@ -1,73 +1,57 @@
 package com.example.ajay.animationswithopengl;
 
 import android.animation.Animator;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.Scene;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.transition.TransitionManager;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 
 public class CrossFade extends AppCompatActivity {
 
-    private View mContentView;
-    private View mLoadingView;
-    private int mShortAnimationDuration;
+    private Transition mFadeTransition;
+    private Scene mInitialScene;
+    private Scene mSecondScene;
+    private FrameLayout mFrame;
+    private Button mButton;
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cross_fade);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationIcon(R.drawable.rsz_ic_action_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                crossFade();
+            public void onClick(View v) {
+                finish();
             }
         });
 
-        mContentView = findViewById(R.id.scroller);
-        mLoadingView = findViewById(R.id.progress_bar);
+        mButton = (Button) findViewById(R.id.button);
+        mFadeTransition = TransitionInflater.from(this)
+                .inflateTransition(R.transition.fade_transition);
 
-        mContentView.setVisibility(View.GONE);
+        mFrame = (FrameLayout) findViewById(R.id.frame);
 
-        mShortAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
-    }
+        mInitialScene = Scene.getSceneForLayout(mFrame,R.layout.initial_scene_crossfade,this);
+        mSecondScene = Scene.getSceneForLayout(mFrame, R.layout.second_scene_crossfade, this);
 
-    public void crossFade(){
-        mContentView.setAlpha(0f);
-        mContentView.setVisibility(View.VISIBLE);
 
-        mContentView.animate()
-                .alpha(1f)
-                .setDuration(mShortAnimationDuration)
-                .setListener(null);
-
-        mLoadingView.animate()
-                .alpha(0f)
-                .setDuration(mShortAnimationDuration)
-                .setListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        mLoadingView.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
-
-                    }
-                });
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransitionManager.go(mSecondScene, mFadeTransition);
+            }
+        });
     }
 }

@@ -1,48 +1,32 @@
 package com.example.ajay.animationswithopengl.Adapter;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.ajay.animationswithopengl.Fragments.CustomAnimationsFragment;
-import com.example.ajay.animationswithopengl.Fragments.TransitionsFragment;
+import com.example.ajay.animationswithopengl.CustomAnimations.BlinkAnimation;
 import com.example.ajay.animationswithopengl.R;
 
 /**
- * Created by ajay on 22/3/16.
+ * Created by ajay on 30/3/16.
  */
-public class CustomAnimationsAdapter extends BaseAdapter {
+public class CustomAnimationsFragmentAdapter extends BaseAdapter {
 
     private String[] mDataList;
     private Context mContext;
-    private FragmentManager mFragmentManager;
-    private FrameLayout mFrame;
-    private ListView mList;
 
-    public CustomAnimationsAdapter(Context context,String[] dataList,
-                                   FragmentManager pFragmentManager,FrameLayout pFrame,
-                                   ListView pList){
+    public CustomAnimationsFragmentAdapter(Context context, String[] pDataList){
+
         mContext = context;
-        mDataList = dataList;
-        mFragmentManager = pFragmentManager;
-        mFrame = pFrame;
-        mList = pList;
+        mDataList = pDataList;
     }
 
-    /**
-     * RowHolder class
-     */
     private class RowHolder{
-
         LinearLayout mLayout;
         TextView mText;
 
@@ -73,8 +57,7 @@ public class CustomAnimationsAdapter extends BaseAdapter {
         RowHolder holder;
 
         if(convertView == null){
-
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.row_custom_animations,null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.row_custom_animations_fragment,null);
             holder = new RowHolder(convertView);
             convertView.setTag(holder);
         }else{
@@ -84,12 +67,14 @@ public class CustomAnimationsAdapter extends BaseAdapter {
         holder.mText.setText(mDataList[position]);
         holder.mLayout.setBackgroundColor(getColor());
         setOnClickListenerForRow(holder, position);
+
         return convertView;
     }
 
     /**
-     * Method to set onClickListener for row click
+     * OnClickListener for row
      * @param holder
+     * @param position
      */
     private void setOnClickListenerForRow(RowHolder holder, final int position){
 
@@ -97,25 +82,24 @@ public class CustomAnimationsAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                Fragment fragment = null;
-
+                Intent intent = null;
                 switch(position){
+
                     case 0:
-                        fragment = new TransitionsFragment();
+                        intent = new Intent(mContext, BlinkAnimation.class);
                         break;
 
                     case 1:
-                        fragment = new CustomAnimationsFragment();
                         break;
 
                     default:
                         break;
                 }
 
-                mFragmentManager.beginTransaction()
-                        .replace(mFrame.getId(), fragment)
-                        .commit();
-                mList.setVisibility(View.GONE);
+                if(intent != null)
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                mContext.startActivity(intent);
             }
         });
     }
