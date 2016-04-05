@@ -11,8 +11,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.ajay.animationswithopengl.Fragments.CircularRevealFragment;
 import com.example.ajay.animationswithopengl.Fragments.CustomAnimationsFragment;
 import com.example.ajay.animationswithopengl.Fragments.TransitionsFragment;
 import com.example.ajay.animationswithopengl.R;
@@ -108,6 +108,10 @@ public class CustomAnimationsAdapter extends BaseAdapter {
                         fragment = new CustomAnimationsFragment();
                         break;
 
+                    case 2:
+                        fragment = new CircularRevealFragment();
+                        break;
+
                     default:
                         break;
                 }
@@ -116,6 +120,7 @@ public class CustomAnimationsAdapter extends BaseAdapter {
                         .replace(mFrame.getId(), fragment)
                         .commit();
                 mList.setVisibility(View.GONE);
+                mFrame.setVisibility(View.VISIBLE);
             }
         });
     }

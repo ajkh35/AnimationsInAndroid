@@ -30,13 +30,20 @@ public class CustomAnimations extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(mFrame.getVisibility() == View.VISIBLE){
+                    mFrame.setVisibility(View.GONE);
+                    mList.setVisibility(View.VISIBLE);
+                    return;
+                }
+
                 finish();
             }
         });
 
         mDataList = getResources().getStringArray(R.array.custom_animation_elements);
         mList = (ListView) findViewById(R.id.custom_animation_list);
-        mFrame = (FrameLayout) findViewById(R.id.frame);
+        mFrame = (FrameLayout) findViewById(R.id.fragment_frame);
         mFragmentManager = getSupportFragmentManager();
 
         CustomAnimationsAdapter adapter = new CustomAnimationsAdapter(this,mDataList,

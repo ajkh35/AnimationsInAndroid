@@ -37,6 +37,7 @@
     <string-array name="custom_animation_elements">
         <item>Scene end Transitions</item>
         <item>Custom Animations</item>
+        <item>Circular Reveal Animations</item>
     </string-array>
 
     <string-array name="transitions_fragment_elements">
@@ -47,8 +48,9 @@
 
     <string-array name="custom_animations_fragment_elements">
         <item>Blink Animation</item>
-        <item>Slide Animation</item>
+        <item>Highlight Animation</item>
         <item>Explode Animation</item>
+        <item>Slide In</item>
     </string-array>
 
     <string name="title_activity_property_animations">PropertyAnimations</string>
@@ -72,4 +74,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="click">Click the button to go to next scene.</string>
+    <string name="reveal_text">This is circular reveal.</string>
+    <string name="click_button"><![CDATA[Click the button to continue ->]]></string>
 </resources>

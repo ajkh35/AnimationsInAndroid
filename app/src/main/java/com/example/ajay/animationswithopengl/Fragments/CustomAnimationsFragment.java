@@ -23,7 +23,7 @@ public class CustomAnimationsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.custom_animations_fragment,container);
+        View view = inflater.inflate(R.layout.custom_animations_fragment,container,false);
         mList = (ListView) view.findViewById(R.id.custom_animations);
         mDataList = getResources().getStringArray(R.array.custom_animations_fragment_elements);
 

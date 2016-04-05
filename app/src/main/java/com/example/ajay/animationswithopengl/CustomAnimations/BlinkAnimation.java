@@ -1,28 +1,24 @@
 package com.example.ajay.animationswithopengl.CustomAnimations;
 
+import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 /**
  * Created by ajay on 30/3/16.
  */
-public class BlinkAnimation extends Animation implements Animation.AnimationListener{
+public class BlinkAnimation extends Animation{
 
-    public BlinkAnimation(){
+    private View mView;
+    private boolean isVisible = false;
+    private int mBlinkCount = 10;
 
+    public BlinkAnimation(View view){
+        mView = view;
     }
 
     @Override
-    public void onAnimationStart(Animation animation) {
-
-    }
-
-    @Override
-    public void onAnimationEnd(Animation animation) {
-
-    }
-
-    @Override
-    public void onAnimationRepeat(Animation animation) {
-
+    protected void applyTransformation(float interpolatedTime, Transformation t) {
+        super.applyTransformation(interpolatedTime, t);
     }
 }

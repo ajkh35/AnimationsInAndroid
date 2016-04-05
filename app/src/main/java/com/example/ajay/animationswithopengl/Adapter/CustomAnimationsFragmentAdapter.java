@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.ajay.animationswithopengl.CustomAnimations.BlinkAnimation;
 import com.example.ajay.animationswithopengl.R;
+import com.easyandroidanimations.library.*;
 
 /**
  * Created by ajay on 30/3/16.
@@ -57,7 +59,8 @@ public class CustomAnimationsFragmentAdapter extends BaseAdapter {
         RowHolder holder;
 
         if(convertView == null){
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.row_custom_animations_fragment,null);
+            convertView = LayoutInflater.from(mContext)
+                    .inflate(R.layout.row_custom_animations_fragment, null);
             holder = new RowHolder(convertView);
             convertView.setTag(holder);
         }else{
@@ -80,26 +83,36 @@ public class CustomAnimationsFragmentAdapter extends BaseAdapter {
 
         holder.mLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
 
-                Intent intent = null;
                 switch(position){
 
                     case 0:
-                        intent = new Intent(mContext, BlinkAnimation.class);
+                        new com.easyandroidanimations.library.BlinkAnimation(v).animate();
                         break;
 
                     case 1:
+                        new HighlightAnimation(v).animate();
+                        break;
+
+                    case 2:
+                        new ExplodeAnimation(v).setExplodeMatrix(ExplodeAnimation.MATRIX_2X2)
+                                .setListener(new AnimationListener() {
+                                    @Override
+                                    public void onAnimationEnd(Animation animation) {
+                                        v.setVisibility(View.VISIBLE);
+                                    }
+                                })
+                                .animate();
+                        break;
+
+                    case 3:
+                        new SlideInAnimation(v).animate();
                         break;
 
                     default:
                         break;
                 }
-
-                if(intent != null)
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                mContext.startActivity(intent);
             }
         });
     }

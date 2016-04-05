@@ -5,8 +5,10 @@ import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ public class ViewAnimationsAdapter extends BaseAdapter {
     private LayoutInflater mInflator;
     private String[] mDataList;
     private Animation mAnimation;
+    private TranslateAnimation mTranslate;
 
     public ViewAnimationsAdapter(Context pContext,String[] pDataList){
         mContext = pContext;
@@ -74,56 +77,54 @@ public class ViewAnimationsAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * OnClickListener for card click
+     * @param pHolder
+     * @param position
+     */
     private void setOnClickListenerForCard(ViewHolder pHolder,final int position){
 
         pHolder.mLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
 
-                new AsyncTask<String,String,String>(){
+                switch(position){
 
-                    @Override
-                    protected void onPreExecute() {
+                    case 0:
+                        //Tween alpha through XML
+                        mAnimation = AnimationUtils
+                                .loadAnimation(mContext, R.anim.tween);
 
-                        switch(position){
+                        //Uncomment to Tween alpha through AlphaAnimation object
+//                        mAnimation = new AlphaAnimation(1,0);
+//                        mAnimation.setDuration(2000);
+                        break;
 
-                            case 0:
-                                mAnimation = AnimationUtils.loadAnimation(mContext,R.anim.tween);
-                                break;
-                            case 1:
-                                mAnimation = AnimationUtils.loadAnimation(mContext,R.anim.scaling);
-                                break;
-                            case 2:
-                                mAnimation = AnimationUtils.loadAnimation(mContext,R.anim.rotation);
-                                break;
-                            case 3:
-                                mAnimation = AnimationUtils.loadAnimation(mContext,R.anim.transform);
-                                break;
-                            case 4:
-                                mAnimation = AnimationUtils.loadAnimation(mContext,
-                                        R.anim.custom_view_animations);
-                                break;
-                            default:
-                                break;
-                        }
+                    case 1:
+                        mAnimation = AnimationUtils
+                                .loadAnimation(mContext, R.anim.scaling);
+                        break;
 
-                        v.startAnimation(mAnimation);
-                        super.onPreExecute();
-                    }
+                    case 2:
+                        mAnimation = AnimationUtils
+                                .loadAnimation(mContext, R.anim.rotation);
+                        break;
 
-                    @Override
-                    protected String doInBackground(String... params) {
-                        return null;
-                    }
+                    case 3:
+                        mAnimation = AnimationUtils
+                                .loadAnimation(mContext, R.anim.transform);
+                        break;
 
-                    @Override
-                    protected void onPostExecute(String s) {
-                        Toast.makeText(mContext,R.string.notice_animation,
-                                Toast.LENGTH_SHORT).show();
-                        super.onPostExecute(s);
-                    }
+                    case 4:
+                        mAnimation = AnimationUtils
+                                .loadAnimation(mContext, R.anim.custom_view_animations);
+                        break;
 
-                }.execute();
+                    default:
+                        break;
+                }
+
+                v.startAnimation(mAnimation);
             }
         });
     }
