@@ -76,4 +76,6 @@
     <string name="click">Click the button to go to next scene.</string>
     <string name="reveal_text">This is circular reveal.</string>
     <string name="click_button"><![CDATA[Click the button to continue ->]]></string>
+    <string name="click_to_go_back"><![CDATA[Click the button to go back ->]]></string>
+    <string name="normal_text">This is normal view.</string>
 </resources>

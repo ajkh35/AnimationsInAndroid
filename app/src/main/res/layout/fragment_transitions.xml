@@ -8,6 +8,7 @@
     <ListView
         android:id="@+id/scene_list"
         android:dividerHeight="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_20"
         android:paddingRight="@dimen/dp_15"
         android:paddingLeft="@dimen/dp_15"
         android:layout_width="match_parent"

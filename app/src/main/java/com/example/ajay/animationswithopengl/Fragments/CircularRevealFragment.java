@@ -2,6 +2,7 @@ package com.example.ajay.animationswithopengl.Fragments;
 
 import android.animation.Animator;
 import android.annotation.TargetApi;
+import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,6 +27,7 @@ public class CircularRevealFragment extends Fragment {
     private FloatingActionButton mFab;
     private boolean isReveal;
     private TextView mClickText;
+    private TextView mNormalText;
 
     @Nullable
     @Override
@@ -35,6 +37,7 @@ public class CircularRevealFragment extends Fragment {
         mRevealLayout = (RelativeLayout) view.findViewById(R.id.reveal_layout);
         mFab = (FloatingActionButton) view.findViewById(R.id.fab_button);
         mClickText = (TextView) view.findViewById(R.id.click_button_text);
+        mNormalText = (TextView) view.findViewById(R.id.normal_text);
 
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +74,10 @@ public class CircularRevealFragment extends Fragment {
             @Override
             public void onAnimationEnd(Animator animation) {
                 view.setVisibility(View.INVISIBLE);
-                mClickText.setVisibility(View.VISIBLE);
-                mFab.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                mClickText.setText(getString(R.string.click_button));
+                mClickText.setTextColor(getResources().getColor(android.R.color.black));
+                mNormalText.setVisibility(View.VISIBLE);
+                mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
             }
 
             @Override
@@ -107,8 +112,10 @@ public class CircularRevealFragment extends Fragment {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                mClickText.setVisibility(View.GONE);
-                mFab.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+                mClickText.setText(getString(R.string.click_to_go_back));
+                mClickText.setTextColor(getResources().getColor(android.R.color.white));
+                mNormalText.setVisibility(View.GONE);
+                mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
             }
 
             @Override
