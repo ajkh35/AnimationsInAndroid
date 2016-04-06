@@ -162,7 +162,8 @@ public class TransitionsFragment extends Fragment {
             RowHolder holder;
 
             if(convertView == null){
-                convertView = LayoutInflater.from(mContext).inflate(R.layout.transitions_fragment_row,null);
+                convertView = LayoutInflater.from(mContext)
+                        .inflate(R.layout.transitions_fragment_row,null);
                 holder = new RowHolder(convertView);
                 convertView.setTag(holder);
             }else{

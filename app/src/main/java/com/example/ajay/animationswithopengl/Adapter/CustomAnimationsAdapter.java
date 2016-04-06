@@ -28,9 +28,8 @@ public class CustomAnimationsAdapter extends BaseAdapter {
     private FrameLayout mFrame;
     private ListView mList;
 
-    public CustomAnimationsAdapter(Context context,String[] dataList,
-                                   FragmentManager pFragmentManager,FrameLayout pFrame,
-                                   ListView pList){
+    public CustomAnimationsAdapter(Context context,String[] dataList,FragmentManager pFragmentManager,
+                                   FrameLayout pFrame,ListView pList){
         mContext = context;
         mDataList = dataList;
         mFragmentManager = pFragmentManager;

@@ -5,6 +5,8 @@ import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -140,7 +142,9 @@ public class MyAdapter extends BaseAdapter{
 
                     @Override
                     protected void onPostExecute(String s) {
-                        mContext.startActivity(lIntent);
+                        Bundle bundle = ActivityOptionsCompat.makeCustomAnimation(
+                                mContext,R.anim.slide_up_animation,R.anim.slide_down).toBundle();
+                        mContext.startActivity(lIntent,bundle);
                         super.onPostExecute(s);
                     }
                 }.execute();
