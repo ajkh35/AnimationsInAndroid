@@ -150,7 +150,7 @@ public class ObjectAnimatorFragment extends Fragment implements View.OnClickList
      * Method to animate transform of view
      * @param view
      */
-    private void animateTransform(final View view){
+    private void animateTransform(View view){
 
         mAnimator = ObjectAnimator.ofInt(view, "left", 100,
                 ((mSize.x)/2) - (int) getResources().getDimension(R.dimen.dp_35))

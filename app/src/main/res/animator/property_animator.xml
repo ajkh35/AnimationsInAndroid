@@ -3,10 +3,15 @@
 
     <objectAnimator
         android:propertyName="alpha"
-        android:duration="500"
+        android:duration="250"
         android:valueFrom="1"
         android:valueTo="0.5"
-        android:repeatCount="1"
-        android:repeatMode="reverse" />
+        android:startOffset="0"/>
 
+    <objectAnimator
+        android:propertyName="alpha"
+        android:duration="250"
+        android:valueFrom="0.5"
+        android:startOffset="250"
+        android:valueTo="1"/>
 </set>

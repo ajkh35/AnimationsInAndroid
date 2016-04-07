@@ -1,16 +1,14 @@
 package com.example.ajay.animationswithopengl.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.ajay.animationswithopengl.CustomAnimations.BlinkAnimation;
+import com.example.ajay.animationswithopengl.CustomAnimations.MyAnimation;
 import com.example.ajay.animationswithopengl.R;
 import com.easyandroidanimations.library.*;
 
@@ -108,6 +106,10 @@ public class CustomAnimationsFragmentAdapter extends BaseAdapter {
 
                     case 3:
                         new SlideInAnimation(v).animate();
+                        break;
+
+                    case 4:
+                        new MyAnimation(v).animate();
                         break;
 
                     default:

@@ -51,6 +51,7 @@
         <item>Highlight Animation</item>
         <item>Explode Animation</item>
         <item>Slide In</item>
+        <item>My Animation</item>
     </string-array>
 
     <string name="title_activity_property_animations">PropertyAnimations</string>

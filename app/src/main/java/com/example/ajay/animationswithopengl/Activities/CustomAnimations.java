@@ -51,4 +51,14 @@ public class CustomAnimations extends AppCompatActivity {
         mList.setAdapter(adapter);
     }
 
+    @Override
+    public void onBackPressed() {
+        if(mFrame.getVisibility() == View.VISIBLE){
+            mFrame.setVisibility(View.GONE);
+            mList.setVisibility(View.VISIBLE);
+            return;
+        }
+
+        finish();
+    }
 }
