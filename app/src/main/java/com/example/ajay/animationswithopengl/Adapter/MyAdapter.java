@@ -2,6 +2,7 @@ package com.example.ajay.animationswithopengl.Adapter;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -99,17 +100,18 @@ public class MyAdapter extends BaseAdapter{
                     @Override
                     protected void onPreExecute() {
 
+                        Animation animation =
+                                AnimationUtils.loadAnimation(mContext, R.anim.tween);
+
                         switch (position) {
 
                             case 0:
-                                Animation lAnimation = AnimationUtils
-                                        .loadAnimation(mContext, R.anim.tween);
-                                v.startAnimation(lAnimation);
+                                v.startAnimation(animation);
                                 lIntent = new Intent(mContext, ViewAnimations.class);
                                 break;
 
                             case 1:
-                                AnimatorSet set = (AnimatorSet) AnimatorInflater
+                                ObjectAnimator set = (ObjectAnimator) AnimatorInflater
                                         .loadAnimator(mContext, R.animator.property_animator);
                                 set.setTarget(v);
                                 set.start();
@@ -117,10 +119,12 @@ public class MyAdapter extends BaseAdapter{
                                 break;
 
                             case 2:
+                                v.startAnimation(animation);
                                 lIntent = new Intent(mContext, DrawableAnimations.class);
                                 break;
 
                             case 3:
+                                v.startAnimation(animation);
                                 lIntent = new Intent(mContext, CustomAnimations.class);
                                 break;
 

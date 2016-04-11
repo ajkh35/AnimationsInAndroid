@@ -1,6 +1,7 @@
 package com.example.ajay.animationswithopengl.Adapter;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
@@ -25,12 +27,14 @@ public class ViewAnimationsAdapter extends BaseAdapter {
     private LayoutInflater mInflator;
     private String[] mDataList;
     private Animation mAnimation;
-    private TranslateAnimation mTranslate;
+    private int mScreenWidth,mScreenHeight;
 
     public ViewAnimationsAdapter(Context pContext,String[] pDataList){
         mContext = pContext;
         mDataList = pDataList;
         mInflator = (LayoutInflater) pContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mScreenWidth = mContext.getResources().getDisplayMetrics().widthPixels;
+        mScreenHeight = mContext.getResources().getDisplayMetrics().heightPixels;
     }
 
     private class ViewHolder{
@@ -82,7 +86,7 @@ public class ViewAnimationsAdapter extends BaseAdapter {
      * @param pHolder
      * @param position
      */
-    private void setOnClickListenerForCard(ViewHolder pHolder,final int position){
+    private void setOnClickListenerForCard(final ViewHolder pHolder,final int position){
 
         pHolder.mLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,8 +105,14 @@ public class ViewAnimationsAdapter extends BaseAdapter {
                         break;
 
                     case 1:
+                        //Tween scale through XML
                         mAnimation = AnimationUtils
                                 .loadAnimation(mContext, R.anim.scaling);
+
+                        //Uncomment to Tween scale through ScaleAnimation object
+//                        mAnimation = new ScaleAnimation(1f,1.2f,1f,1.2f,pHolder.mLayout.getPivotX(),
+//                                pHolder.mLayout.getPivotY());
+//                        mAnimation.setDuration(500);
                         break;
 
                     case 2:
