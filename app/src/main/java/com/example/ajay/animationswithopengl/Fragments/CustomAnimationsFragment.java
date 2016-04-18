@@ -33,5 +33,4 @@ public class CustomAnimationsFragment extends Fragment {
 
         return view;
     }
-
 }

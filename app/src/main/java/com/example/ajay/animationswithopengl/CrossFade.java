@@ -1,6 +1,5 @@
 package com.example.ajay.animationswithopengl;
 
-import android.animation.Animator;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;

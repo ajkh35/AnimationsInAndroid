@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.transition.Fade;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,12 +23,12 @@ import com.example.ajay.animationswithopengl.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TransitionsFragment.OnFragmentInteractionListener} interface
+ * {@link ActivityTransitionsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TransitionsFragment#newInstance} factory method to
+ * Use the {@link ActivityTransitionsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TransitionsFragment extends Fragment {
+public class ActivityTransitionsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -44,7 +43,7 @@ public class TransitionsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public TransitionsFragment() {
+    public ActivityTransitionsFragment() {
         // Required empty public constructor
     }
 
@@ -54,11 +53,11 @@ public class TransitionsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TransitionsFragment.
+     * @return A new instance of fragment ActivityTransitionsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TransitionsFragment newInstance(String param1, String param2) {
-        TransitionsFragment fragment = new TransitionsFragment();
+    public static ActivityTransitionsFragment newInstance(String param1, String param2) {
+        ActivityTransitionsFragment fragment = new ActivityTransitionsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

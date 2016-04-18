@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
@@ -75,9 +77,10 @@ public class CircularRevealFragment extends Fragment {
             public void onAnimationEnd(Animator animation) {
                 view.setVisibility(View.INVISIBLE);
                 mClickText.setText(getString(R.string.click_button));
-                mClickText.setTextColor(getResources().getColor(android.R.color.black));
+                mClickText.setTextColor(ContextCompat.getColor(getActivity(),android.R.color.black));
                 mNormalText.setVisibility(View.VISIBLE);
-                mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
+                mFab.setBackgroundTintList(ColorStateList.valueOf(
+                        ContextCompat.getColor(getActivity(),R.color.colorAccent)));
             }
 
             @Override
@@ -113,9 +116,10 @@ public class CircularRevealFragment extends Fragment {
             @Override
             public void onAnimationEnd(Animator animation) {
                 mClickText.setText(getString(R.string.click_to_go_back));
-                mClickText.setTextColor(getResources().getColor(android.R.color.white));
+                mClickText.setTextColor(ContextCompat.getColor(getActivity(),android.R.color.white));
                 mNormalText.setVisibility(View.GONE);
-                mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
+                mFab.setBackgroundTintList(ColorStateList.valueOf(
+                        ContextCompat.getColor(getActivity(),R.color.colorPrimary)));
             }
 
             @Override

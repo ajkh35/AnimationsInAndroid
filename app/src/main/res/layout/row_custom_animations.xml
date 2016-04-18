@@ -14,6 +14,7 @@
             android:textSize="@dimen/sp_30"
             android:layout_gravity="center"
             android:gravity="center"
+            android:transitionName="transition_text"
             android:textColor="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_70" />

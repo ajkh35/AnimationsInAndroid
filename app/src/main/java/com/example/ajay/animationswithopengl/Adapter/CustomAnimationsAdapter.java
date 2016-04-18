@@ -1,8 +1,11 @@
 package com.example.ajay.animationswithopengl.Adapter;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.transition.ChangeTransform;
+import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +15,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.ajay.animationswithopengl.CrossFade;
+import com.example.ajay.animationswithopengl.Fragments.ActivityTransitionsFragment;
 import com.example.ajay.animationswithopengl.Fragments.CircularRevealFragment;
 import com.example.ajay.animationswithopengl.Fragments.CustomAnimationsFragment;
-import com.example.ajay.animationswithopengl.Fragments.TransitionsFragment;
+import com.example.ajay.animationswithopengl.Fragments.FragmentTransitions;
 import com.example.ajay.animationswithopengl.R;
 
 /**
@@ -90,7 +95,7 @@ public class CustomAnimationsAdapter extends BaseAdapter {
      * Method to set onClickListener for row click
      * @param holder
      */
-    private void setOnClickListenerForRow(RowHolder holder, final int position){
+    private void setOnClickListenerForRow(final RowHolder holder, final int position){
 
         holder.mLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +105,7 @@ public class CustomAnimationsAdapter extends BaseAdapter {
 
                 switch(position){
                     case 0:
-                        fragment = new TransitionsFragment();
+                        fragment = new ActivityTransitionsFragment();
                         break;
 
                     case 1:
@@ -111,11 +116,24 @@ public class CustomAnimationsAdapter extends BaseAdapter {
                         fragment = new CircularRevealFragment();
                         break;
 
+                    case 3:
+                        fragment = new FragmentTransitions();
+                        break;
+
                     default:
                         break;
                 }
 
+//                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
+//                        && fragment!=null){
+//                    fragment.setEnterTransition(new Fade());
+//                    fragment.setExitTransition(new Fade());
+//                    fragment.setSharedElementEnterTransition(new ChangeTransform());
+//                    fragment.setSharedElementReturnTransition(new ChangeTransform());
+//                }
+
                 mFragmentManager.beginTransaction()
+//                        .addSharedElement(holder.mText,"transition_text")
                         .replace(mFrame.getId(), fragment)
                         .commit();
                 mList.setVisibility(View.GONE);

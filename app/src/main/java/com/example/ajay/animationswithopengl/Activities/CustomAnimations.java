@@ -29,7 +29,7 @@ public class CustomAnimations extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(mFrame.getVisibility() == View.VISIBLE){
+                if (mFrame.getVisibility() == View.VISIBLE) {
                     mFrame.setVisibility(View.GONE);
                     mList.setVisibility(View.VISIBLE);
                     return;

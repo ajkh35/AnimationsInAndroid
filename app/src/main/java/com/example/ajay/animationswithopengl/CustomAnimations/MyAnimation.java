@@ -18,12 +18,37 @@ import com.example.ajay.animationswithopengl.Interpolators.CustomInterpolator;
 public class MyAnimation extends Animation {
 
     private View mView;
-    private final Long DURATION = 500L;
+    private Long DURATION;
     private Interpolator mInterpolator;
 
     public MyAnimation(View view){
         mView = view;
+        DURATION = 500L;
         mInterpolator = new CustomInterpolator();
+    }
+
+    public void setDURATION(Long DURATION) {
+        this.DURATION = DURATION;
+    }
+
+    public Long getDURATION() {
+        return DURATION;
+    }
+
+    public void setmInterpolator(Interpolator mInterpolator) {
+        this.mInterpolator = mInterpolator;
+    }
+
+    public Interpolator getmInterpolator() {
+        return mInterpolator;
+    }
+
+    public void setmView(View mView) {
+        this.mView = mView;
+    }
+
+    public View getmView() {
+        return mView;
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)

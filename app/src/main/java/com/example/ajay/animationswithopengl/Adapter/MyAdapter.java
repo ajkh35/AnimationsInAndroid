@@ -99,12 +99,10 @@ public class MyAdapter extends BaseAdapter{
 
                     @Override
                     protected void onPreExecute() {
-
                         Animation animation =
                                 AnimationUtils.loadAnimation(mContext, R.anim.tween);
 
                         switch (position) {
-
                             case 0:
                                 v.startAnimation(animation);
                                 lIntent = new Intent(mContext, ViewAnimations.class);
@@ -159,7 +157,6 @@ public class MyAdapter extends BaseAdapter{
 
     /**
      * Method to get the card color
-     *
      * @param position
      * @return
      */
