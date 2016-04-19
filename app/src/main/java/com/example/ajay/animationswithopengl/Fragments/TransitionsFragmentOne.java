@@ -26,7 +26,7 @@ public class TransitionsFragmentOne extends Fragment{
 
         View view = inflater.inflate(R.layout.transitions_fragment_1,container,false);
         mImg = (ImageView) view.findViewById(R.id.img);
-
+        mImg.setTransitionName("image_transition");
 
         return view;
     }

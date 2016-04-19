@@ -3,6 +3,7 @@ package com.example.ajay.animationswithopengl.Fragments;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +12,9 @@ import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -42,6 +46,8 @@ public class ActivityTransitionsFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private AnimationSet mSet;
+    private int mScreenWidth;
 
     public ActivityTransitionsFragment() {
         // Required empty public constructor
@@ -86,6 +92,17 @@ public class ActivityTransitionsFragment extends Fragment {
 
         TransitionsFragmentAdapter adapter = new TransitionsFragmentAdapter(getActivity(),mDataList);
         mList.setAdapter(adapter);
+
+        //get screen height
+        Point size = new Point();
+        getActivity().getWindowManager().getDefaultDisplay().getSize(size);
+        mScreenWidth = size.x;
+
+        mSet = new AnimationSet(false);
+        mSet.addAnimation(new AlphaAnimation(0f,1f));
+        mSet.addAnimation(new TranslateAnimation(mScreenWidth, 0f, 0f, 0f));
+        mSet.setDuration(1500);
+        mList.startAnimation(mSet);
         return view;
     }
 

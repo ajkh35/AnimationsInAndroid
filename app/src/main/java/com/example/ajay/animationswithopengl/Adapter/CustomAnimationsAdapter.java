@@ -124,16 +124,7 @@ public class CustomAnimationsAdapter extends BaseAdapter {
                         break;
                 }
 
-//                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
-//                        && fragment!=null){
-//                    fragment.setEnterTransition(new Fade());
-//                    fragment.setExitTransition(new Fade());
-//                    fragment.setSharedElementEnterTransition(new ChangeTransform());
-//                    fragment.setSharedElementReturnTransition(new ChangeTransform());
-//                }
-
                 mFragmentManager.beginTransaction()
-//                        .addSharedElement(holder.mText,"transition_text")
                         .replace(mFrame.getId(), fragment)
                         .commit();
                 mList.setVisibility(View.GONE);

@@ -3,6 +3,7 @@ package com.example.ajay.animationswithopengl.Adapter;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -87,7 +88,7 @@ public class MyAdapter extends BaseAdapter{
      * @param convertView
      * @param position
      */
-    private void setOnClickListenerForCard(View convertView, final int position){
+    private void setOnClickListenerForCard(final View convertView, final int position){
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,8 +145,11 @@ public class MyAdapter extends BaseAdapter{
 
                     @Override
                     protected void onPostExecute(String s) {
-                        Bundle bundle = ActivityOptionsCompat.makeCustomAnimation(
-                                mContext,R.anim.slide_up_animation,R.anim.slide_down).toBundle();
+                        Bundle bundle = new Bundle();
+                        bundle.putBundle("Activity bundle",ActivityOptionsCompat.makeCustomAnimation(
+                                mContext,R.anim.slide_up_animation,R.anim.slide_down).toBundle());
+                        bundle.putBundle("shared element bundle",ActivityOptionsCompat
+                                .makeSceneTransitionAnimation((Activity) mContext,convertView,"convertview").toBundle());
                         mContext.startActivity(lIntent,bundle);
                         super.onPostExecute(s);
                     }

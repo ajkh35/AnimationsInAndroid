@@ -14,6 +14,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ public class CircularRevealFragment extends Fragment {
     private boolean isReveal;
     private TextView mClickText;
     private TextView mNormalText;
+    private FrameLayout mMainFrame;
 
     @Nullable
     @Override
@@ -37,6 +40,7 @@ public class CircularRevealFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.circular_reveal_layout,container,false);
         mRevealLayout = (RelativeLayout) view.findViewById(R.id.reveal_layout);
+        mMainFrame = (FrameLayout) view.findViewById(R.id.main_frame);
         mFab = (FloatingActionButton) view.findViewById(R.id.fab_button);
         mClickText = (TextView) view.findViewById(R.id.click_button_text);
         mNormalText = (TextView) view.findViewById(R.id.normal_text);
@@ -54,6 +58,11 @@ public class CircularRevealFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        mMainFrame.setAnimation(new AlphaAnimation(0f,1f));
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
