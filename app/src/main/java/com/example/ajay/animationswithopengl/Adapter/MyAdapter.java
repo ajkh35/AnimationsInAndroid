@@ -1,7 +1,6 @@
 package com.example.ajay.animationswithopengl.Adapter;
 
 import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;

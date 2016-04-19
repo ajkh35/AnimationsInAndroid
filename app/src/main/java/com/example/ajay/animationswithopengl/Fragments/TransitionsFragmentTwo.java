@@ -3,8 +3,6 @@ package com.example.ajay.animationswithopengl.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.transition.ChangeImageTransform;
-import android.transition.Fade;
 import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
