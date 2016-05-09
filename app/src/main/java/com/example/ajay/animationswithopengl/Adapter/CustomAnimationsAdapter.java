@@ -1,11 +1,8 @@
 package com.example.ajay.animationswithopengl.Adapter;
 
 import android.content.Context;
-import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.transition.ChangeTransform;
-import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.ajay.animationswithopengl.CrossFade;
 import com.example.ajay.animationswithopengl.Fragments.ActivityTransitionsFragment;
 import com.example.ajay.animationswithopengl.Fragments.CircularRevealFragment;
 import com.example.ajay.animationswithopengl.Fragments.CustomAnimationsFragment;

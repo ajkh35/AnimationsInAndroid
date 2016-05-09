@@ -95,7 +95,7 @@ public class MyAdapter extends BaseAdapter{
 
                 new AsyncTask<String,String,String>(){
 
-                    private Intent lIntent;
+                    private Intent lIntent=null;
 
                     @Override
                     protected void onPreExecute() {
@@ -144,12 +144,14 @@ public class MyAdapter extends BaseAdapter{
 
                     @Override
                     protected void onPostExecute(String s) {
-                        Bundle bundle = new Bundle();
-                        bundle.putBundle("Activity bundle",ActivityOptionsCompat.makeCustomAnimation(
-                                mContext,R.anim.slide_up_animation,R.anim.slide_down).toBundle());
-                        bundle.putBundle("shared element bundle",ActivityOptionsCompat
-                                .makeSceneTransitionAnimation((Activity) mContext,convertView,"convertview").toBundle());
-                        mContext.startActivity(lIntent,bundle);
+                        if(lIntent != null) {
+                            Bundle bundle = new Bundle();
+                            bundle.putBundle("Activity bundle", ActivityOptionsCompat.makeCustomAnimation(
+                                    mContext, R.anim.slide_up_animation, R.anim.slide_down).toBundle());
+                            bundle.putBundle("shared element bundle", ActivityOptionsCompat
+                                    .makeSceneTransitionAnimation((Activity) mContext, convertView, "convertview").toBundle());
+                            mContext.startActivity(lIntent, bundle);
+                        }
                         super.onPostExecute(s);
                     }
                 }.execute();
