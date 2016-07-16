@@ -25,13 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
         MyAdapter lAdapter = new MyAdapter(this,mData);
         mList.setAdapter(lAdapter);
-
-
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-
         super.onWindowFocusChanged(hasFocus);
     }
 }

@@ -38,7 +38,7 @@
         <item>Scene and Transitions</item>
         <item>Extending Animation Class</item>
         <item>Circular Reveal Animations</item>
-        <item>Transitions across activity</item>
+        <!--<item>Transitions across activity</item>-->
     </string-array>
 
     <string-array name="transitions_fragment_elements">
@@ -58,6 +58,7 @@
     <string name="title_activity_property_animations">PropertyAnimations</string>
     <string name="title_activity_drawable_animations">DrawableAnimations</string>
     <string name="title_activity_custom_animations">CustomAnimations</string>
+    <string name="card_flip">Card Flip</string>
     <string name="alpha">Alpha</string>
     <string name="scale">Scale</string>
     <string name="linear_interpolator">Linear Interpolator</string>

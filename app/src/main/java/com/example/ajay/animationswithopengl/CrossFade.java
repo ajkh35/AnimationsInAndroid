@@ -45,7 +45,6 @@ public class CrossFade extends AppCompatActivity {
         mInitialScene = Scene.getSceneForLayout(mFrame,R.layout.initial_scene_crossfade,this);
         mSecondScene = Scene.getSceneForLayout(mFrame, R.layout.second_scene_crossfade, this);
 
-
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -53,7 +53,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".CardFlip"
-            android:label="@string/title_activity_custom_animations"
+            android:label="@string/card_flip"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
     </application>
