@@ -51,6 +51,11 @@
             android:label="@string/title_activity_custom_animations"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".CardFlip"
+            android:label="@string/title_activity_custom_animations"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

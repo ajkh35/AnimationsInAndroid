@@ -21,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ajay.animationswithopengl.CardFlip;
 import com.example.ajay.animationswithopengl.CrossFade;
 import com.example.ajay.animationswithopengl.R;
 
@@ -210,7 +211,7 @@ public class ActivityTransitionsFragment extends Fragment {
                             break;
 
                         case 1:
-                            Toast.makeText(mContext,"Card flip clicked",Toast.LENGTH_SHORT).show();
+                            launchCardFlip();
                             break;
 
                         case 2:
@@ -222,6 +223,15 @@ public class ActivityTransitionsFragment extends Fragment {
                     }
                 }
             });
+        }
+
+        /**
+         * Method to launch Card Flip
+         */
+        private void launchCardFlip(){
+            Intent intent = new Intent(mContext, CardFlip.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
 
         /**

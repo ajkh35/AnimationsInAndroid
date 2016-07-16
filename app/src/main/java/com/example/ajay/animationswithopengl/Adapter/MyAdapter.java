@@ -172,11 +172,11 @@ public class MyAdapter extends BaseAdapter{
         switch (position){
 
                 case 0:
-                    color = ContextCompat.getColor(mContext,R.color.colorAccent);
+                    color = ContextCompat.getColor(mContext,android.R.color.holo_orange_dark);
                     break;
 
                 case 1:
-                    color = ContextCompat.getColor(mContext,android.R.color.holo_purple);
+                    color = ContextCompat.getColor(mContext,R.color.colorAccent);
                     break;
 
                 case 2:
@@ -184,7 +184,7 @@ public class MyAdapter extends BaseAdapter{
                     break;
 
                 case 3:
-                    color = ContextCompat.getColor(mContext,android.R.color.holo_orange_dark);
+                    color = ContextCompat.getColor(mContext,android.R.color.holo_purple);
                     break;
 
                 default:

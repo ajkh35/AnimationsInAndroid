@@ -35,7 +35,7 @@
     </string-array>
 
     <string-array name="custom_animation_elements">
-        <item>Scene end Transitions</item>
+        <item>Scene and Transitions</item>
         <item>Extending Animation Class</item>
         <item>Circular Reveal Animations</item>
         <item>Transitions across activity</item>
@@ -44,7 +44,7 @@
     <string-array name="transitions_fragment_elements">
         <item>CrossFade</item>
         <item>Card Flip Animation</item>
-        <item>Zooming a View</item>
+        <!--<item>Zooming a View</item>-->
     </string-array>
 
     <string-array name="custom_animations_fragment_elements">

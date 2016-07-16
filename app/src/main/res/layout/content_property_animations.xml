@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.ajay.animationswithopengl.Activities.PropertyAnimations"
     tools:showIn="@layout/activity_property_animations"
-    android:background="@android:color/holo_purple">
+    android:background="@color/colorAccent">
 
     <ListView
         android:id="@+id/property_animations_list"
