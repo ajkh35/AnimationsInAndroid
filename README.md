@@ -1,6 +1,6 @@
 # AnimationsInAndroid
 
-This is an Android POC to demonstrate animation effects. These animations make use of the fundamental animation framewoks provided by android like **View animations**, **Property animations** etc.
+This is an Android POC to demonstrate animation effects. These animations make use of the fundamental animation framewoks provided by android like **View animations**, **Property animations** etc. You can find the published app on play store named "Animations in Android" at this url "https://play.google.com/store/apps/details?id=com.myapp.ajay.animationsinandroid".
 
 ## View Animations
 
